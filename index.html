@@ -12,9 +12,8 @@
 <meta property="og:title" content="Muhammad Alviand Fredonovalle — Senior Android Developer">
 <meta property="og:description" content="4+ years building mobile apps for digital banking and e-commerce. Currently working on Wondr by BNI (10+ million users).">
 <meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231a56db'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3EAF%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#06070c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233ddc84'/%3E%3Cstop offset='1' stop-color='%237f52ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='white' text-anchor='middle'%3EAF%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -26,268 +25,287 @@
   "sameAs": ["https://www.linkedin.com/in/alviandf", "https://github.com/alviandf"]
 }
 </script>
+<noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f8fa;
-    --surface: #ffffff;
-    --text: #15181e;
-    --muted: #5b6270;
-    --line: #e3e6eb;
-    --accent: #1a56db;
-    --accent-soft: #e8effd;
-    --chip: #f0f2f5;
-    --shadow: 0 1px 2px rgba(16, 24, 40, .05);
+    --bg: #06070c;
+    --glass: rgba(14, 17, 26, .66);
+    --glass-2: rgba(22, 26, 38, .72);
+    --line: rgba(255, 255, 255, .09);
+    --text: #eef1f6;
+    --muted: #97a0b2;
+    --green: #3ddc84;
+    --violet: #7f52ff;
+    --display: "Space Grotesk", Inter, system-ui, sans-serif;
+    --col: min(640px, 52vw);
+    --left: max(16px, calc((100vw - 1240px) / 2 + 16px));
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0f1115;
-      --surface: #171a21;
-      --text: #e8eaee;
-      --muted: #9aa2b1;
-      --line: #2a2f3a;
-      --accent: #7aa2ff;
-      --accent-soft: #1c2640;
-      --chip: #212632;
-      --shadow: none;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #0f1115;
-    --surface: #171a21;
-    --text: #e8eaee;
-    --muted: #9aa2b1;
-    --line: #2a2f3a;
-    --accent: #7aa2ff;
-    --accent-soft: #1c2640;
-    --chip: #212632;
-    --shadow: none;
-  }
-
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: hidden;
   }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
-
-  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
-
-  /* Header */
-  header.hero { padding: 56px 0 32px; }
-  .hero h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.15; margin: 0 0 6px; letter-spacing: -0.02em; }
-  .hero .role { font-size: clamp(17px, 2.4vw, 20px); color: var(--muted); margin: 0 0 4px; }
-  .hero .loc { color: var(--muted); margin: 0 0 22px; font-size: 15px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 9px 14px; border-radius: 10px; font-size: 15px; font-weight: 600;
-    border: 1px solid var(--line); background: var(--surface); color: var(--text);
-    box-shadow: var(--shadow);
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(60vw 60vw at 85% 10%, rgba(127, 82, 255, .20), transparent 60%),
+      radial-gradient(50vw 50vw at 10% 90%, rgba(61, 220, 132, .12), transparent 60%),
+      var(--bg);
   }
-  .btn:hover { text-decoration: none; border-color: var(--accent); }
-  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-  :root[data-theme="dark"] .btn.primary { color: #0f1115; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn.primary { color: #0f1115; } }
-  .btn svg { width: 17px; height: 17px; flex: none; }
+  a { color: inherit; }
+  ::selection { background: var(--green); color: #04150b; }
 
-  .theme-toggle {
-    position: absolute; top: 16px; right: 16px;
-    width: 38px; height: 38px; border-radius: 10px; cursor: pointer;
-    border: 1px solid var(--line); background: var(--surface); color: var(--text);
-    display: grid; place-items: center;
+  #scene { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; display: block; transition: opacity .6s ease; }
+
+  /* nav */
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 14px var(--left); transition: background .3s, border-color .3s; border-bottom: 1px solid transparent; }
+  body.scrolled .nav { background: rgba(6, 7, 12, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: var(--line); }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 700; letter-spacing: -.01em; }
+  .brand i { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-style: normal; font-size: 14px; background: linear-gradient(135deg, var(--green), var(--violet)); color: #fff; }
+  .links { display: flex; gap: 26px; font-size: 14px; }
+  .links a { text-decoration: none; color: var(--muted); transition: color .2s; }
+  .links a:hover { color: var(--text); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 12px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--line); background: var(--glass-2); backdrop-filter: blur(10px); transition: transform .2s, border-color .2s, box-shadow .2s; }
+  .btn:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.25); }
+  .btn.primary { background: var(--green); color: #04150b; border-color: var(--green); box-shadow: 0 10px 30px -10px rgba(61,220,132,.7); }
+  .btn.primary:hover { box-shadow: 0 14px 40px -10px rgba(61,220,132,.9); }
+  .btn.sm { padding: 8px 14px; font-size: 14px; border-radius: 10px; }
+
+  main { position: relative; }
+  .col { width: var(--col); margin-left: var(--left); }
+
+  /* hero */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 110px 0 60px; }
+  .eyebrow { display: inline-flex; flex-wrap: wrap; row-gap: 8px; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); margin-bottom: 22px; }
+  .eyebrow b { white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; color: var(--green); font-weight: 600; padding: 5px 12px; border-radius: 999px; background: rgba(61,220,132,.1); border: 1px solid rgba(61,220,132,.3); }
+  .eyebrow b::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(61,220,132,.7); } 80%, 100% { box-shadow: 0 0 0 9px rgba(61,220,132,0); } }
+  h1 { font-family: var(--display); font-size: clamp(44px, 7vw, 96px); line-height: .95; letter-spacing: -.045em; margin: 0 0 24px; font-weight: 700; }
+  h1 .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .06em; }
+  h1 .w > span { display: inline-block; transform: translateY(110%); animation: up .9s cubic-bezier(.2,.8,.2,1) forwards; }
+  h1 .grad { background: linear-gradient(90deg, var(--green), #9bffc8 40%, #b69dff 80%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  @keyframes up { to { transform: none; } }
+  .lead { font-size: clamp(17px, 1.6vw, 20px); color: #c3cad7; max-width: 30em; margin: 0 0 32px; opacity: 0; animation: fade .9s .7s forwards; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; opacity: 0; animation: fade .9s .9s forwards; }
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .scroll-hint { margin-top: 56px; display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: 0; animation: fade 1s 1.4s forwards; }
+  .scroll-hint span { width: 22px; height: 36px; border: 2px solid rgba(255,255,255,.3); border-radius: 12px; position: relative; }
+  .scroll-hint span::after { content: ""; position: absolute; left: 50%; top: 6px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: var(--green); animation: wheel 1.6s infinite; }
+  @keyframes wheel { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(12px); } }
+
+  /* marquee */
+  .marquee { position: relative; overflow: hidden; padding: 22px 0; border-block: 1px solid var(--line); background: rgba(6,7,12,.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .track { display: flex; width: max-content; animation: slide 45s linear infinite; }
+  .marquee:hover .track { animation-play-state: paused; }
+  .track ul { display: flex; gap: 34px; margin: 0; padding: 0 17px; list-style: none; }
+  .track li { display: flex; align-items: center; gap: 10px; font-weight: 500; color: #d5dae4; white-space: nowrap; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* app-icon tiles from Simple Icons */
+  .tile { --s: 30px; width: var(--s); height: var(--s); border-radius: calc(var(--s) * .26); background: var(--bgc); display: grid; place-items: center; flex: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 6px 16px -8px var(--bgc); }
+  .tile::before { content: ""; width: 58%; height: 58%; background: var(--fg, #fff); -webkit-mask: var(--icon) center / contain no-repeat; mask: var(--icon) center / contain no-repeat; }
+
+  /* sections */
+  section.block { padding: 110px 0 0; }
+  .sh { margin-bottom: 30px; }
+  .sh .k { font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--green); font-weight: 600; }
+  .sh h2 { font-family: var(--display); font-size: clamp(34px, 4.6vw, 56px); line-height: 1; letter-spacing: -.035em; margin: 10px 0 0; }
+
+  .glass { background: var(--glass); border: 1px solid var(--line); border-radius: 22px; backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2); }
+
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .stat { padding: 24px; position: relative; overflow: hidden; }
+  .stat b { display: block; font-family: var(--display); font-size: clamp(40px, 4.4vw, 60px); line-height: 1; letter-spacing: -.04em; }
+  .stat b em { font-style: normal; color: var(--green); }
+  .stat span { color: var(--muted); }
+  .stat::after { content: ""; position: absolute; right: -40px; bottom: -40px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, var(--glow, rgba(61,220,132,.25)), transparent 70%); }
+
+  .job { padding: 28px; margin-bottom: 18px; transition: border-color .3s, transform .3s; }
+  .job.active { border-color: rgba(61,220,132,.45); }
+  .job-top { display: flex; justify-content: space-between; gap: 6px 16px; flex-wrap: wrap; align-items: baseline; }
+  .job h3 { font-family: var(--display); font-size: 24px; letter-spacing: -.02em; margin: 0; }
+  .job .org { color: var(--muted); font-weight: 500; margin-top: 2px; }
+  .when { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .now { font-size: 12px; font-weight: 700; color: #04150b; background: var(--green); padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: 2px; }
+  .job ul { margin: 16px 0 16px; padding: 0; list-style: none; }
+  .job li { position: relative; padding-left: 22px; margin: 8px 0; color: #cfd5e0; }
+  .job li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 8px; height: 8px; border-radius: 2px; background: linear-gradient(135deg, var(--green), var(--violet)); transform: rotate(45deg); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+  .chips li { font-size: 13px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.06); border: 1px solid var(--line); color: #d5dae4; margin: 0; }
+  .chips li::before { display: none; }
+  .job details summary { cursor: pointer; color: var(--green); font-weight: 600; font-size: 14px; list-style: none; margin-bottom: 14px; }
+  .job details summary::-webkit-details-marker { display: none; }
+  .job details[open] summary { display: none; }
+  .play { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--green); text-decoration: none; margin-top: 16px; }
+  .play:hover { text-decoration: underline; }
+
+  .earlier { padding: 8px 28px; }
+  .erow { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .erow:last-child { border-bottom: 0; }
+  .erow b { font-weight: 600; }
+  .erow p { grid-column: 1 / -1; margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .proj { padding: 22px; display: flex; flex-direction: column; text-decoration: none; transition: transform .3s, border-color .3s; }
+  .proj:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.22); }
+  .proj .ic { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 22px; margin-bottom: 16px; color: #fff; }
+  .proj h3 { margin: 0; font-family: var(--display); font-size: 21px; letter-spacing: -.02em; }
+  .proj .sub { color: var(--muted); font-size: 14px; margin: 2px 0 10px; }
+  .proj p { margin: 0 0 14px; color: #cfd5e0; font-size: 15px; }
+  .proj .chips { margin-top: auto; }
+  .proj.feature { grid-column: span 2; }
+
+  .stack { padding: 26px; }
+  .stack h4 { margin: 0 0 14px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 14px 10px; margin-bottom: 26px; }
+  .icons div { display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 13px; color: #d5dae4; text-align: center; }
+  .icons .tile { --s: 52px; transition: transform .25s; }
+  .icons div:hover .tile { transform: translateY(-4px) rotate(-6deg); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .info { padding: 24px; }
+  .info h4 { margin: 0 0 12px; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .info p { margin: 0 0 12px; }
+  .info p:last-child { margin: 0; }
+  .info small { display: block; color: var(--muted); font-size: 14px; }
+
+  .contact { text-align: left; padding: 48px 36px; margin-top: 110px; position: relative; overflow: hidden; }
+  .contact h2 { font-family: var(--display); font-size: clamp(36px, 5vw, 64px); line-height: 1; letter-spacing: -.04em; margin: 0 0 14px; }
+  .contact p { color: #c3cad7; margin: 0 0 26px; font-size: 18px; }
+  .contact::after { content: ""; position: absolute; right: -80px; top: -80px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(127,82,255,.45), transparent 70%); }
+  footer { padding: 40px 0 50px; color: var(--muted); font-size: 14px; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    h1 .w > span, .lead, .cta, .scroll-hint { transform: none; opacity: 1; }
+    .reveal { opacity: 1; transform: none; }
+    .track { flex-wrap: wrap; width: auto; }
+    .track ul:last-child { display: none; }
   }
-  .theme-toggle svg { width: 18px; height: 18px; }
 
-  /* Sections */
-  section { padding: 28px 0; border-top: 1px solid var(--line); }
-  h2 {
-    font-size: 13px; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--muted); margin: 0 0 18px; font-weight: 700;
+  @media (max-width: 960px) {
+    #scene { position: absolute; top: 0; left: 0; width: 100%; height: 100svh; }
+    :root { --col: auto; --left: 16px; }
+    .col { margin-right: 16px; }
+    .links { display: none; }
+    .hero { justify-content: flex-end; padding-top: 52vh; min-height: 100svh; }
+    h1 { font-size: clamp(40px, 11vw, 64px); }
+    .scroll-hint { display: none; }
+    .projects, .two { grid-template-columns: 1fr; }
+    .proj.feature { grid-column: auto; }
+    section.block { padding-top: 80px; }
+    .job, .stack { padding: 22px; }
+    .contact { padding: 34px 24px; }
   }
-  .summary { font-size: 17px; margin: 0; }
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
-  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; box-shadow: var(--shadow); }
-  .stat b { display: block; font-size: 22px; line-height: 1.2; }
-  .stat span { color: var(--muted); font-size: 14px; }
-
-  /* Experience */
-  .job { position: relative; padding-left: 22px; margin-bottom: 26px; }
-  .job:last-child { margin-bottom: 0; }
-  .job::before {
-    content: ""; position: absolute; left: 0; top: 9px; width: 9px; height: 9px;
-    border-radius: 50%; background: var(--accent);
-  }
-  .job::after {
-    content: ""; position: absolute; left: 4px; top: 24px; bottom: -22px; width: 1px; background: var(--line);
-  }
-  .job:last-child::after { display: none; }
-  .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 16px; align-items: baseline; }
-  .job h3 { font-size: 18px; margin: 0; line-height: 1.35; }
-  .job h3 .org { color: var(--muted); font-weight: 500; }
-  .date { color: var(--muted); font-size: 14px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  ul.points { margin: 8px 0 10px; padding-left: 18px; }
-  ul.points li { margin: 4px 0; }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
-  .chips li { background: var(--chip); color: var(--text); font-size: 13px; padding: 3px 9px; border-radius: 999px; }
-  .store { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; margin-top: 10px; }
-  .store svg { width: 15px; height: 15px; }
-
-  details.more { margin-top: 26px; }
-  details.more summary {
-    cursor: pointer; font-weight: 600; color: var(--accent); list-style: none; padding: 4px 0;
-  }
-  details.more summary::-webkit-details-marker { display: none; }
-  details.more summary::before { content: "+ "; }
-  details.more[open] summary::before { content: "− "; }
-  details.more .inner { margin-top: 18px; }
-
-  /* Projects */
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .card {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
-    padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column;
-  }
-  .card h3 { margin: 0; font-size: 17px; }
-  .card .sub { color: var(--muted); font-size: 14px; margin: 2px 0 10px; }
-  .card p { margin: 0 0 8px; }
-  .card .chips { margin-top: auto; padding-top: 6px; }
-
-  /* Skills */
-  .skills { display: grid; grid-template-columns: 130px 1fr; gap: 14px 18px; align-items: start; }
-  .skills dt { font-weight: 600; padding-top: 2px; }
-  .skills dd { margin: 0; }
-
-  .simple { margin: 0; padding: 0; list-style: none; }
-  .simple li { margin-bottom: 14px; }
-  .simple li:last-child { margin-bottom: 0; }
-  .simple .t { font-weight: 600; }
-  .simple .s { color: var(--muted); font-size: 15px; }
-
-  footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
-
-  @media (max-width: 640px) {
-    header.hero { padding-top: 64px; }
-    .stats { grid-template-columns: 1fr; }
-    .grid { grid-template-columns: 1fr; }
-    .skills { grid-template-columns: 1fr; gap: 4px; }
-    .skills dd { margin-bottom: 12px; }
-    .date { white-space: normal; }
-  }
-
-  @media print {
-    :root { --bg: #fff; --surface: #fff; --text: #000; --muted: #444; --line: #ccc; --accent: #1a56db; --chip: #fff; --shadow: none; }
-    .theme-toggle, .actions .btn.primary { display: none; }
-    details.more > .inner { display: block !important; }
-    details.more summary { display: none; }
-    header.hero { padding-top: 0; }
-    section { break-inside: auto; }
-    .job, .card { break-inside: avoid; }
-    .chips li { border: 1px solid #ccc; }
-  }
+  @media (max-width: 420px) { .stats { grid-template-columns: 1fr 1fr; } .stat { padding: 18px; } .stat b { font-size: 34px; } }
 </style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+} }
+</script>
 </head>
 <body>
-<div class="wrap" style="position:relative">
-  <button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="themeToggle">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-  </button>
+<canvas id="scene" aria-hidden="true"></canvas>
 
-  <header class="hero">
-    <h1>Muhammad Alviand Fredonovalle</h1>
-    <p class="role">Senior Android Developer · Kotlin, Jetpack Compose, Multiplatform</p>
-    <p class="loc">Jakarta, Indonesia</p>
-    <div class="actions">
-      <a class="btn primary" href="CV_Muhammad_Alviand_Fredonovalle.pdf" download>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>
-        Download CV (PDF)
-      </a>
-      <a class="btn" href="https://www.linkedin.com/in/alviandf" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.79-1.7-2.79-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>
-        LinkedIn
-      </a>
-      <a class="btn" href="https://github.com/alviandf" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
-        GitHub
-      </a>
-      <a class="btn" href="mailto:alviand03@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        Email
-      </a>
+<header class="nav">
+  <a class="brand" href="#top"><i>AF</i>Alviand</a>
+  <nav class="links"><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#stack">Stack</a><a href="#contact">Contact</a></nav>
+  <a class="btn sm primary" href="CV_Muhammad_Alviand_Fredonovalle.pdf" download>Download CV</a>
+</header>
+
+<main id="top">
+  <section class="hero col" data-screen="profile">
+    <div class="eyebrow">Jakarta, Indonesia</div>
+    <h1 aria-label="Muhammad Alviand Fredonovalle">
+      <span class="w"><span style="animation-delay:.05s">Muhammad</span></span>
+      <span class="w"><span class="grad" style="animation-delay:.15s">Alviand</span></span><br>
+      <span class="w"><span style="animation-delay:.28s">Fredonovalle</span></span>
+    </h1>
+    <p class="lead">Senior Android Developer building apps that millions of people use every day, with Kotlin, Jetpack Compose, and Kotlin/Compose Multiplatform.</p>
+    <div class="cta">
+      <a class="btn primary" href="CV_Muhammad_Alviand_Fredonovalle.pdf" download>Download CV</a>
+      <a class="btn" href="https://www.linkedin.com/in/alviandf" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/alviandf" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
-  </header>
+    <div class="scroll-hint"><span></span>Scroll</div>
+  </section>
 
-  <main>
-    <section aria-labelledby="about">
-      <h2 id="about">About</h2>
-      <p class="summary">Senior Android Developer with 4+ years of professional experience building mobile apps for digital banking and e-commerce, currently working on Wondr by BNI. Skilled in Kotlin, Jetpack Compose, Kotlin/Compose Multiplatform, and Flutter, with strong practice in Clean Architecture, unit testing, and CI/CD. A proven leader and mentor who drives architecture migrations, code quality, and knowledge sharing to deliver reliable, high-quality apps.</p>
-      <div class="stats">
-        <div class="stat"><b>10M+</b><span>users on Wondr by BNI</span></div>
-        <div class="stat"><b>99%+</b><span>crash-free rate at Female Daily</span></div>
-        <div class="stat"><b>30%</b><span>faster compile time via modularization</span></div>
+  <div class="marquee" aria-label="Technologies">
+    <div class="track" id="track"></div>
+  </div>
+
+  <section class="block col" id="impact" data-screen="impact">
+    <div class="sh reveal"><span class="k">Impact</span><h2>Numbers that ship.</h2></div>
+    <div class="stats">
+      <div class="glass stat reveal"><b><span data-count="10">0</span><em>M+</em></b><span>users on Wondr by BNI</span></div>
+      <div class="glass stat reveal" style="--glow:rgba(127,82,255,.35)"><b><span data-count="500">0</span><em>K+</em></b><span>users at Female Daily</span></div>
+      <div class="glass stat reveal" style="--glow:rgba(236,72,153,.3)"><b><span data-count="99">0</span><em>%+</em></b><span>crash-free rate</span></div>
+      <div class="glass stat reveal" style="--glow:rgba(34,211,238,.3)"><b><em>−</em><span data-count="30">0</span><em>%</em></b><span>compile time via modularization</span></div>
+    </div>
+  </section>
+
+  <section class="block col" id="experience">
+    <div class="sh reveal"><span class="k">Experience</span><h2>Where I’ve built.</h2></div>
+
+    <article class="glass job reveal" data-screen="bni">
+      <div class="job-top">
+        <div><h3>Senior Android Developer<span class="now">NOW</span></h3><div class="org">Bank Negara Indonesia</div></div>
+        <span class="when">May 2026 – Present</span>
       </div>
-    </section>
+      <ul>
+        <li>Develop and maintain Wondr by BNI, a digital banking application serving 10+ million users, as part of the squad responsible for Payment, Transaction, and Lifestyle features.</li>
+        <li>Initiated the adoption of Fastlane to automate development workflows and speed up delivery, and shared best practices with peers.</li>
+        <li>Conduct code reviews and provide technical mentorship to ensure code quality, maintainability, and adherence to architectural standards.</li>
+        <li>Design and implement modern Android applications using Kotlin, Jetpack Compose, MVVM, Coroutines, and Clean Architecture principles.</li>
+        <li>Improve application stability and user experience through monitoring, crash analysis, and performance optimization.</li>
+        <li>Develop and maintain unit tests with code coverage above 80% to improve reliability and reduce regressions.</li>
+      </ul>
+      <ul class="chips"><li>Kotlin</li><li>Jetpack Compose</li><li>Coroutines</li><li>MVVM</li><li>Room</li><li>Retrofit</li><li>Firebase</li><li>Jenkins</li><li>Fastlane</li><li>GitLab</li></ul>
+      <a class="play" href="https://play.google.com/store/apps/details?id=id.bni.wondr" target="_blank" rel="noopener">Wondr by BNI on Google Play ↗</a>
+    </article>
 
-    <section aria-labelledby="experience">
-      <h2 id="experience">Experience</h2>
+    <article class="glass job reveal" data-screen="rey">
+      <div class="job-top">
+        <div><h3>Mobile Developer</h3><div class="org">Rey</div></div>
+        <span class="when">Dec 2025 – Apr 2026</span>
+      </div>
+      <ul>
+        <li>Designed and implemented a Clean Architecture structure (Data, Domain, and Presentation layers) for a Compose Multiplatform app.</li>
+        <li>Architected a foundational MVI-based state management layer to standardize feature development.</li>
+        <li>Built a base theming system (color tokens, typography, design primitives) and a reusable UI component library.</li>
+        <li>Leveraged AI-assisted development tools to accelerate architecture scaffolding while maintaining code quality, security, and architectural integrity.</li>
+        <li>Established a scalable cross-platform UI foundation to support future Android and iOS expansion.</li>
+      </ul>
+      <ul class="chips"><li>Compose Multiplatform</li><li>Kotlin</li><li>Coroutines</li><li>MVI</li><li>Clean Architecture</li></ul>
+    </article>
 
-      <article class="job">
-        <div class="job-head">
-          <h3>Senior Android Developer <span class="org">· Bank Negara Indonesia</span></h3>
-          <span class="date">May 2026 – Present</span>
-        </div>
-        <ul class="points">
-          <li>Develop and maintain Wondr by BNI, a digital banking application serving 10+ million users, as part of the squad responsible for Payment, Transaction, and Lifestyle features.</li>
-          <li>Initiated the adoption of Fastlane to automate development workflows and speed up delivery, and shared best practices with peers.</li>
-          <li>Conduct code reviews and provide technical mentorship to ensure code quality, maintainability, and adherence to architectural standards.</li>
-          <li>Design and implement modern Android applications using Kotlin, Jetpack Compose, MVVM, Coroutines, and Clean Architecture principles.</li>
-          <li>Improve application stability and user experience through monitoring, crash analysis, and performance optimization.</li>
-          <li>Develop and maintain unit tests with code coverage above 80% to improve reliability and reduce regressions.</li>
-        </ul>
-        <ul class="chips" aria-label="Technologies">
-          <li>Kotlin</li><li>Jetpack Compose</li><li>Coroutines</li><li>MVVM</li><li>Room</li><li>Retrofit</li><li>Firebase</li><li>Push Notifications</li><li>Jenkins</li><li>Fastlane</li><li>GitLab</li><li>Jira</li><li>Unit Testing</li>
-        </ul>
-        <a class="store" href="https://play.google.com/store/apps/details?id=id.bni.wondr" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 2.5v19l10.5-9.5zM15.6 13.1l2.4 2.2-11 6.3zM15.6 10.9 7 2.4l11 6.3zM19.2 9.4l2.4 1.4c.6.4.6 1.1 0 1.5l-2.4 1.3-2.6-2.1z"/></svg>
-          Wondr by BNI on Google Play
-        </a>
-      </article>
-
-      <article class="job">
-        <div class="job-head">
-          <h3>Mobile Developer <span class="org">· Rey</span></h3>
-          <span class="date">Dec 2025 – Apr 2026</span>
-        </div>
-        <ul class="points">
-          <li>Designed and implemented a Clean Architecture structure (Data, Domain, and Presentation layers) for a Compose Multiplatform app.</li>
-          <li>Architected a foundational MVI-based state management layer to standardize feature development.</li>
-          <li>Built a base theming system (color tokens, typography, design primitives) to ensure UI consistency and scalability.</li>
-          <li>Developed a reusable UI component library to reduce boilerplate and accelerate feature implementation.</li>
-          <li>Leveraged AI-assisted development tools to accelerate architecture scaffolding and component generation while maintaining code quality, security best practices, and architectural integrity.</li>
-          <li>Established a scalable cross-platform UI foundation to support future Android and iOS expansion.</li>
-        </ul>
-        <ul class="chips" aria-label="Technologies">
-          <li>Compose Multiplatform</li><li>Kotlin</li><li>Coroutines</li><li>MVI</li><li>Clean Architecture</li><li>Git</li>
-        </ul>
-      </article>
-
-      <article class="job">
-        <div class="job-head">
-          <h3>Android Developer <span class="org">· Female Daily (Subsidiary of CT Corp)</span></h3>
-          <span class="date">Oct 2022 – Nov 2025</span>
-        </div>
-        <ul class="points">
-          <li>Led the Android Commerce Tribe in developing and enhancing 10+ core platform features, including Authentication, Commerce, Payment Gateway Integration, Advanced Search, and Flash Sale, serving over 500,000 users.</li>
-          <li>Initiated and led the migration to Jetpack Compose and MVI architecture, and ran knowledge-sharing and training sessions for team members.</li>
-          <li>Implemented a modular architecture with 6 independently runnable apps, improving maintainability, scalability, and development speed while reducing compile time by 30%.</li>
-          <li>Used Kotlin Multiplatform (KMP) to share code between the Android and iOS apps, reducing code duplication, speeding up development, and keeping features consistent across platforms.</li>
+    <article class="glass job reveal" data-screen="fd">
+      <div class="job-top">
+        <div><h3>Android Developer</h3><div class="org">Female Daily (Subsidiary of CT Corp)</div></div>
+        <span class="when">Oct 2022 – Nov 2025</span>
+      </div>
+      <ul>
+        <li>Led the Android Commerce Tribe in developing and enhancing 10+ core platform features, including Authentication, Commerce, Payment Gateway Integration, Advanced Search, and Flash Sale, serving over 500,000 users.</li>
+        <li>Initiated and led the migration to Jetpack Compose and MVI architecture, and ran knowledge-sharing and training sessions for team members.</li>
+        <li>Implemented a modular architecture with 6 independently runnable apps, improving maintainability and development speed while reducing compile time by 30%.</li>
+        <li>Used Kotlin Multiplatform (KMP) to share code between the Android and iOS apps, reducing duplication and keeping features consistent across platforms.</li>
+        <li>Maintained a 99%+ crash-free rate and resolved major issues, including the “Resource Not Found” crash and Payment Deeplink issues.</li>
+      </ul>
+      <details>
+        <summary>+ 8 more highlights</summary>
+        <ul>
           <li>Developed a Point of Sale (POS) system for desktop and tablet using Flutter, enabling efficient, user-friendly transaction management.</li>
           <li>Developed flexible payment solutions, including Sprint Dynamic Payment Deeplink, improving the payment flow.</li>
-          <li>Maintained a 99%+ crash-free rate and resolved major issues, including the “Resource Not Found” crash and Payment Deeplink issues.</li>
           <li>Implemented Clean Architecture (Data and Domain layers) with MVVM, improving code maintainability and scalability.</li>
           <li>Built developer and QA tools, including a Network Mock Response tool, to make testing more efficient.</li>
           <li>Developed and maintained JUnit tests to ensure high code quality and reliability.</li>
@@ -295,186 +313,542 @@
           <li>Contributed to CI/CD pipelines with Jenkins, enabling faster app distribution and release cycles.</li>
           <li>Implemented caching and static fallback data, keeping the app 99.9% available even during server outages.</li>
         </ul>
-        <ul class="chips" aria-label="Technologies">
-          <li>Kotlin</li><li>Jetpack Compose</li><li>KMP</li><li>Coroutines</li><li>RxJava</li><li>MVVM</li><li>Room</li><li>Retrofit</li><li>Firebase</li><li>MoEngage</li><li>Flutter</li><li>Jenkins</li><li>Bitbucket</li><li>Jira</li><li>Unit Testing</li>
-        </ul>
-        <a class="store" href="https://play.google.com/store/apps/details?id=com.fdbr.android" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 2.5v19l10.5-9.5zM15.6 13.1l2.4 2.2-11 6.3zM15.6 10.9 7 2.4l11 6.3zM19.2 9.4l2.4 1.4c.6.4.6 1.1 0 1.5l-2.4 1.3-2.6-2.1z"/></svg>
-          Female Daily on Google Play
-        </a>
-      </article>
-
-      <details class="more">
-        <summary>Earlier experience & organizations</summary>
-        <div class="inner">
-          <article class="job">
-            <div class="job-head">
-              <h3>Android Developer, Part-Time <span class="org">· Nusantara Beta Studio</span></h3>
-              <span class="date">Jan 2021 – Aug 2021</span>
-            </div>
-            <ul class="points">
-              <li>Contributed to 3+ projects used by over 100,000 users.</li>
-              <li>Implemented seamless, polished user interfaces for mobile apps.</li>
-              <li>Implemented reactive programming with RxJava.</li>
-              <li>Collaborated with the team using Git and GitLab.</li>
-            </ul>
-            <ul class="chips" aria-label="Technologies"><li>Kotlin</li><li>RxJava</li><li>MVVM</li><li>Room</li><li>Retrofit</li></ul>
-          </article>
-
-          <article class="job">
-            <div class="job-head">
-              <h3>Mobile Developer, Trainee <span class="org">· Google Bangkit</span></h3>
-              <span class="date">Jan 2021 – Jul 2021</span>
-            </div>
-            <ul class="points">
-              <li>Selected as one of 3,000 participants in the program.</li>
-              <li>Automated app testing processes with CircleCI.</li>
-              <li>Implemented security best practices for the application.</li>
-              <li>Created unit tests and instrumentation tests for the app.</li>
-            </ul>
-            <ul class="chips" aria-label="Technologies"><li>Kotlin</li><li>Coroutines</li><li>MVVM</li><li>Room</li><li>Retrofit</li></ul>
-          </article>
-
-          <article class="job">
-            <div class="job-head">
-              <h3>Multi App Developer, Trainee <span class="org">· IDCamp Indosat Ooredoo</span></h3>
-              <span class="date">Jul 2021</span>
-            </div>
-            <ul class="points">
-              <li>Learned Dart and the Flutter framework for multiplatform app development.</li>
-            </ul>
-            <ul class="chips" aria-label="Technologies"><li>Dart</li><li>Flutter</li></ul>
-          </article>
-
-          <article class="job">
-            <div class="job-head">
-              <h3>Program Manager <span class="org">· Android Developer Club (HIMTI UIN Jakarta)</span></h3>
-              <span class="date">Sep 2019 – Jun 2021</span>
-            </div>
-            <ul class="points">
-              <li>Managed and planned activities for a 15-member Android developer community on campus.</li>
-              <li>Mentored members on the fundamentals of Android application development.</li>
-            </ul>
-          </article>
-
-          <article class="job">
-            <div class="job-head">
-              <h3>Research and Development, Staff <span class="org">· HIMTI UIN Jakarta</span></h3>
-              <span class="date">Jan 2019 – Dec 2021</span>
-            </div>
-            <ul class="points">
-              <li>Created 2 new programs to improve students’ skills and helped improve existing programs.</li>
-              <li>“Info IT”: a program sharing IT news through Instagram, group chats, and other channels.</li>
-              <li>“HIMTI DEV”: a program to improve students’ skills in Android, web, UI/UX, and data science.</li>
-            </ul>
-          </article>
-        </div>
       </details>
-    </section>
+      <ul class="chips"><li>Kotlin</li><li>Jetpack Compose</li><li>KMP</li><li>RxJava</li><li>Coroutines</li><li>Flutter</li><li>MoEngage</li><li>Bitbucket</li></ul>
+      <a class="play" href="https://play.google.com/store/apps/details?id=com.fdbr.android" target="_blank" rel="noopener">Female Daily on Google Play ↗</a>
+    </article>
 
-    <section aria-labelledby="projects">
-      <h2 id="projects">Projects</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Bara</h3>
-          <p class="sub">Mobile and Backend Developer · Jun 2022 – Aug 2022</p>
-          <p>An Android app and backend API to help people learn Arabic, with an on-device handwriting recognition model and a Jetpack Compose UI.</p>
-          <a class="store" href="https://play.google.com/store/apps/details?id=com.learn.arabicbara" target="_blank" rel="noopener">View on Google Play →</a>
-          <ul class="chips" aria-label="Technologies"><li>Kotlin</li><li>Jetpack Compose</li><li>Koin</li><li>TensorFlow Lite</li><li>Node.js</li><li>MongoDB</li></ul>
-        </article>
-        <article class="card">
-          <h3>Waja <span class="org" style="color:var(--muted);font-weight:500">· Hackathon BPJS 2019</span></h3>
-          <p class="sub">Top 10 Finalist</p>
-          <p>A mobile app that uses face recognition to identify patients quickly. Competed against lecturers and IT experts from across Indonesia.</p>
-          <ul class="chips" aria-label="Technologies"><li>Java</li><li>Azure Cloud</li></ul>
-        </article>
-        <article class="card">
-          <h3>Nutribi</h3>
-          <p class="sub">Mobile Developer · Jul 2021</p>
-          <p>A mobile app that helps prevent child stunting through balanced nutrition guidance.</p>
-          <ul class="chips" aria-label="Technologies"><li>Kotlin</li><li>Koin</li><li>Retrofit</li><li>MVVM</li><li>TensorFlow Lite</li></ul>
-        </article>
-        <article class="card">
-          <h3>Samter</h3>
-          <p class="sub">Mobile Developer · Aug 2021 – Sep 2021</p>
-          <p>A mobile app that integrates data and makes it easier for drivers to collect garbage from temporary waste collection points (TPS).</p>
-          <ul class="chips" aria-label="Technologies"><li>Kotlin</li><li>Koin</li><li>Retrofit</li><li>MVVM</li><li>QR Scanner</li></ul>
-        </article>
-        <article class="card">
-          <h3>Bank Sampah Sahitya</h3>
-          <p class="sub">Mobile Developer · Oct 2019 – Jul 2020</p>
-          <p>A mobile app that helps people at UIN Jakarta exchange waste at the waste bank.</p>
-          <a class="store" href="https://play.google.com/store/apps/details?id=com.sahitya.banksampahsahitya" target="_blank" rel="noopener">View on Google Play →</a>
-          <ul class="chips" aria-label="Technologies"><li>Java</li><li>Retrofit</li></ul>
-        </article>
+    <div class="glass earlier reveal" data-screen="fd">
+      <div class="erow"><b>Android Developer, Part-Time · Nusantara Beta Studio</b><span class="when">Jan 2021 – Aug 2021</span><p>Contributed to 3+ projects used by over 100,000 users; reactive programming with RxJava.</p></div>
+      <div class="erow"><b>Mobile Developer, Trainee · Google Bangkit</b><span class="when">Jan 2021 – Jul 2021</span><p>Selected as one of 3,000 participants; automated app testing with CircleCI.</p></div>
+      <div class="erow"><b>Multi App Developer, Trainee · IDCamp Indosat Ooredoo</b><span class="when">Jul 2021</span><p>Learned Dart and Flutter for multiplatform app development.</p></div>
+      <div class="erow"><b>Program Manager · Android Developer Club (HIMTI UIN Jakarta)</b><span class="when">Sep 2019 – Jun 2021</span><p>Managed a 15-member Android developer community and mentored members.</p></div>
+      <div class="erow"><b>Research and Development, Staff · HIMTI UIN Jakarta</b><span class="when">Jan 2019 – Dec 2021</span><p>Created the “Info IT” and “HIMTI DEV” programs to grow students’ IT skills.</p></div>
+    </div>
+  </section>
+
+  <section class="block col" id="projects" data-screen="projects">
+    <div class="sh reveal"><span class="k">Projects</span><h2>Side quests.</h2></div>
+    <div class="projects">
+      <a class="glass proj feature reveal" href="https://play.google.com/store/apps/details?id=com.learn.arabicbara" target="_blank" rel="noopener">
+        <div class="ic" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">ب</div>
+        <h3>Bara ↗</h3>
+        <div class="sub">Mobile and Backend Developer · Jun 2022 – Aug 2022</div>
+        <p>An Android app and backend API to help people learn Arabic, with an on-device handwriting recognition model and a Jetpack Compose UI.</p>
+        <ul class="chips"><li>Kotlin</li><li>Jetpack Compose</li><li>TensorFlow Lite</li><li>Koin</li><li>Node.js</li><li>MongoDB</li></ul>
+      </a>
+      <div class="glass proj reveal">
+        <div class="ic" style="background:linear-gradient(135deg,#22d3ee,#3b82f6)">W</div>
+        <h3>Waja</h3>
+        <div class="sub">Hackathon BPJS 2019 · Top 10 Finalist</div>
+        <p>A mobile app that uses face recognition to identify patients quickly.</p>
+        <ul class="chips"><li>Java</li><li>Azure Cloud</li></ul>
       </div>
-    </section>
+      <div class="glass proj reveal">
+        <div class="ic" style="background:linear-gradient(135deg,#3ddc84,#16a34a)">N</div>
+        <h3>Nutribi</h3>
+        <div class="sub">Mobile Developer · Jul 2021</div>
+        <p>A mobile app that helps prevent child stunting through balanced nutrition guidance.</p>
+        <ul class="chips"><li>Kotlin</li><li>TensorFlow Lite</li><li>MVVM</li></ul>
+      </div>
+      <div class="glass proj reveal">
+        <div class="ic" style="background:linear-gradient(135deg,#a3e635,#65a30d)">S</div>
+        <h3>Samter</h3>
+        <div class="sub">Mobile Developer · Aug 2021 – Sep 2021</div>
+        <p>Helps drivers collect garbage from temporary waste collection points (TPS) with integrated data and QR scanning.</p>
+        <ul class="chips"><li>Kotlin</li><li>Koin</li><li>QR Scanner</li></ul>
+      </div>
+      <a class="glass proj reveal" href="https://play.google.com/store/apps/details?id=com.sahitya.banksampahsahitya" target="_blank" rel="noopener">
+        <div class="ic" style="background:linear-gradient(135deg,#7f52ff,#ec4899)">B</div>
+        <h3>Bank Sampah Sahitya ↗</h3>
+        <div class="sub">Mobile Developer · Oct 2019 – Jul 2020</div>
+        <p>Helps people at UIN Jakarta exchange waste at the waste bank.</p>
+        <ul class="chips"><li>Java</li><li>Retrofit</li></ul>
+      </a>
+    </div>
+  </section>
 
-    <section aria-labelledby="skills">
-      <h2 id="skills">Skills</h2>
-      <dl class="skills">
-        <dt>Languages</dt>
-        <dd><ul class="chips"><li>Kotlin</li><li>Java</li><li>Dart</li><li>JavaScript</li><li>Ruby</li><li>PHP</li><li>SQL</li></ul></dd>
-        <dt>Technologies</dt>
-        <dd><ul class="chips"><li>Android SDK</li><li>Jetpack Compose</li><li>Kotlin Multiplatform</li><li>Compose Multiplatform</li><li>Flutter</li><li>Coroutines</li><li>RxJava</li><li>Room</li><li>Retrofit</li><li>Firebase</li><li>Fastlane</li><li>Jenkins</li><li>Git</li><li>GitLab</li><li>Bitbucket</li><li>Node.js</li><li>Express.js</li><li>Ruby on Rails</li><li>MongoDB</li><li>MySQL</li><li>SQLite</li></ul></dd>
-        <dt>Practices</dt>
-        <dd><ul class="chips"><li>Clean Architecture</li><li>MVVM</li><li>MVI</li><li>Modularization</li><li>Unit Testing</li><li>CI/CD</li><li>Code Review</li></ul></dd>
-      </dl>
-    </section>
+  <section class="block col" id="stack" data-screen="stack">
+    <div class="sh reveal"><span class="k">Stack</span><h2>Tools of the trade.</h2></div>
+    <div class="glass stack reveal">
+      <h4>Mobile</h4>
+      <div class="icons" id="icons-mobile"></div>
+      <h4>Tooling & CI/CD</h4>
+      <div class="icons" id="icons-tooling"></div>
+      <h4>Languages & Backend</h4>
+      <div class="icons" id="icons-other"></div>
+      <h4>Practices</h4>
+      <ul class="chips"><li>Clean Architecture</li><li>MVVM</li><li>MVI</li><li>Modularization</li><li>Coroutines</li><li>RxJava</li><li>Room</li><li>Retrofit</li><li>Unit Testing</li><li>Code Review</li></ul>
+    </div>
+    <div class="two" style="margin-top:14px">
+      <div class="glass info reveal">
+        <h4>Education</h4>
+        <p><b>Bachelor of Informatics Engineering</b><small>UIN Syarif Hidayatullah Jakarta · Aug 2018 – Jul 2022 · GPA 3.62/4.00</small></p>
+      </div>
+      <div class="glass info reveal">
+        <h4>Certifications</h4>
+        <p><b>Associate Android Developer</b><small>Google · <a href="https://www.credential.net/19682d3e-002a-4c22-b1e7-89eaa484c8a8?key=1311d7cd622ca9216322278462c1c9788d978d84520449c659c52ede465ba29d" target="_blank" rel="noopener">View credential ↗</a></small></p>
+        <p><b>Menjadi Android Developer Expert</b><small>Dicoding</small></p>
+        <p><b>Belajar Android Jetpack Pro</b><small>Dicoding</small></p>
+      </div>
+    </div>
+  </section>
 
-    <section aria-labelledby="education">
-      <h2 id="education">Education</h2>
-      <ul class="simple">
-        <li>
-          <div class="job-head">
-            <span class="t">Bachelor of Informatics Engineering · UIN Syarif Hidayatullah Jakarta</span>
-            <span class="date">Aug 2018 – Jul 2022</span>
-          </div>
-          <div class="s">GPA: 3.62/4.00</div>
-        </li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="certifications">
-      <h2 id="certifications">Certifications</h2>
-      <ul class="simple">
-        <li>
-          <div class="t">Associate Android Developer</div>
-          <div class="s">Google · <a href="https://www.credential.net/19682d3e-002a-4c22-b1e7-89eaa484c8a8?key=1311d7cd622ca9216322278462c1c9788d978d84520449c659c52ede465ba29d" target="_blank" rel="noopener">View credential</a></div>
-        </li>
-        <li>
-          <div class="t">Menjadi Android Developer Expert</div>
-          <div class="s">Dicoding</div>
-        </li>
-        <li>
-          <div class="t">Belajar Android Jetpack Pro</div>
-          <div class="s">Dicoding</div>
-        </li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year">2026</span> Muhammad Alviand Fredonovalle ·
-    <a href="mailto:alviand03@gmail.com">alviand03@gmail.com</a>
-  </footer>
-</div>
+  <section class="col" id="contact" data-screen="contact">
+    <div class="glass contact reveal">
+      <h2>Let’s talk.</h2>
+      <p>Open to conversations about mobile engineering, Android, and Multiplatform.</p>
+      <div class="cta" style="opacity:1;animation:none">
+        <a class="btn primary" href="mailto:alviand03@gmail.com">alviand03@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/alviandf" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="https://github.com/alviandf" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+    <footer>© 2026 Muhammad Alviand Fredonovalle · Built with Three.js</footer>
+  </section>
+</main>
 
 <script>
+  // ---------- shared icon data (Simple Icons, CC0) ----------
+  window.ICON_BASE = 'https://cdn.jsdelivr.net/npm/simple-icons@16.35.0/icons/';
+  window.ICONS = {
+    kotlin: ['Kotlin', '#7F52FF', '#fff'],
+    android: ['Android', '#3DDC84', '#0b2a17'],
+    jetpackcompose: ['Jetpack Compose', '#4285F4', '#fff'],
+    flutter: ['Flutter', '#02569B', '#fff'],
+    dart: ['Dart', '#0175C2', '#fff'],
+    androidstudio: ['Android Studio', '#1f2937', '#3DDC84'],
+    firebase: ['Firebase', '#DD2C00', '#fff'],
+    tensorflow: ['TensorFlow Lite', '#FF6F00', '#fff'],
+    git: ['Git', '#F03C2E', '#fff'],
+    gitlab: ['GitLab', '#FC6D26', '#fff'],
+    bitbucket: ['Bitbucket', '#0052CC', '#fff'],
+    jenkins: ['Jenkins', '#D24939', '#fff'],
+    fastlane: ['Fastlane', '#00F200', '#06280a'],
+    circleci: ['CircleCI', '#343434', '#fff'],
+    jira: ['Jira', '#0052CC', '#fff'],
+    openjdk: ['Java', '#E76F00', '#fff'],
+    javascript: ['JavaScript', '#F7DF1E', '#111'],
+    php: ['PHP', '#777BB4', '#fff'],
+    ruby: ['Ruby', '#CC342D', '#fff'],
+    nodedotjs: ['Node.js', '#5FA04E', '#fff'],
+    express: ['Express.js', '#2b2b2b', '#fff'],
+    rubyonrails: ['Ruby on Rails', '#D30001', '#fff'],
+    mongodb: ['MongoDB', '#47A248', '#fff'],
+    mysql: ['MySQL', '#4479A1', '#fff'],
+    sqlite: ['SQLite', '#0F80CC', '#fff']
+  };
   (function () {
-    var root = document.documentElement;
-    var saved = null;
-    try { saved = localStorage.getItem('theme'); } catch (e) {}
-    if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
-    document.getElementById('themeToggle').addEventListener('click', function () {
-      var current = root.getAttribute('data-theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      var next = current === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
+    function tile(slug, size) {
+      var d = ICONS[slug];
+      var el = document.createElement('i');
+      el.className = 'tile';
+      el.style.setProperty('--bgc', d[1]);
+      el.style.setProperty('--fg', d[2]);
+      el.style.setProperty('--icon', 'url(' + ICON_BASE + slug + '.svg)');
+      if (size) el.style.setProperty('--s', size + 'px');
+      el.setAttribute('aria-hidden', 'true');
+      return el;
+    }
+    // marquee
+    var order = ['kotlin','android','jetpackcompose','flutter','dart','firebase','androidstudio','git','gitlab','jenkins','fastlane','tensorflow','bitbucket','jira','nodedotjs','mongodb','mysql','javascript'];
+    var track = document.getElementById('track');
+    for (var k = 0; k < 2; k++) {
+      var ul = document.createElement('ul');
+      if (k) ul.setAttribute('aria-hidden', 'true');
+      order.forEach(function (s) {
+        var li = document.createElement('li');
+        li.appendChild(tile(s, 30));
+        li.appendChild(document.createTextNode(ICONS[s][0]));
+        ul.appendChild(li);
+      });
+      track.appendChild(ul);
+    }
+    // stack grid
+    var groups = {
+      'icons-mobile': ['kotlin','android','jetpackcompose','flutter','dart','androidstudio','firebase','tensorflow'],
+      'icons-tooling': ['git','gitlab','bitbucket','jenkins','fastlane','circleci','jira'],
+      'icons-other': ['openjdk','javascript','php','ruby','nodedotjs','express','rubyonrails','mongodb','mysql','sqlite']
+    };
+    Object.keys(groups).forEach(function (id) {
+      var box = document.getElementById(id);
+      groups[id].forEach(function (s) {
+        var d = document.createElement('div');
+        d.appendChild(tile(s, 52));
+        d.appendChild(document.createTextNode(ICONS[s][0]));
+        box.appendChild(d);
+      });
     });
-    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // reveal + counters
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function count(el) {
+      var to = +el.dataset.count, t0 = performance.now(), dur = reduce ? 0 : 1400;
+      (function step(t) {
+        var p = dur ? Math.min(1, (t - t0) / dur) : 1;
+        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        e.target.querySelectorAll('[data-count]').forEach(count);
+        io.unobserve(e.target);
+      });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(function (e) { io.observe(e); });
+
+    // nav background + dim scene on small screens after hero
+    function onScroll() {
+      document.body.classList.toggle('scrolled', scrollY > 20);
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
+    onScroll();
   })();
+</script>
+
+<script type="module">
+  import * as THREE from 'three';
+  import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+  import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+  const canvas = document.getElementById('scene');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const small = () => innerWidth <= 960;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  } catch (e) {
+    canvas.style.display = 'none';
+    throw e;
+  }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, small() ? 1.5 : 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 0.1, 100);
+  camera.position.set(0, 0, 9);
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+  const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(3, 4, 6); scene.add(key);
+  const rimG = new THREE.PointLight(0x3ddc84, 25, 0, 2); rimG.position.set(-3.5, 1.5, -1.5); scene.add(rimG);
+  const rimV = new THREE.PointLight(0x7f52ff, 25, 0, 2); rimV.position.set(3.5, -2, 1); scene.add(rimV);
+
+  // ---------- helpers ----------
+  function rr(ctx, x, y, w, h, r) {
+    r = Math.min(r, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+  }
+  const FONT = '"Space Grotesk", Inter, system-ui, sans-serif';
+  const BODY = 'Inter, system-ui, sans-serif';
+  function txt(ctx, s, x, y, size, color, weight = 600, align = 'left', font = FONT, maxW) {
+    ctx.font = `${weight} ${size}px ${font}`; ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = 'alphabetic';
+    maxW ? ctx.fillText(s, x, y, maxW) : ctx.fillText(s, x, y);
+  }
+
+  // ---------- logo tiles (shared by orbit + phone screen) ----------
+  const tiles = {};
+  function makeTile(slug) {
+    const [name, bg, fg] = window.ICONS[slug];
+    const c = document.createElement('canvas'); c.width = c.height = 256;
+    const ctx = c.getContext('2d');
+    rr(ctx, 8, 8, 240, 240, 62); ctx.fillStyle = bg; ctx.fill();
+    const gl = ctx.createLinearGradient(0, 8, 0, 248);
+    gl.addColorStop(0, 'rgba(255,255,255,.28)'); gl.addColorStop(.5, 'rgba(255,255,255,0)');
+    ctx.fillStyle = gl; ctx.fill();
+    const t = { canvas: c, ready: false, tex: new THREE.CanvasTexture(c) };
+    t.tex.colorSpace = THREE.SRGBColorSpace;
+    const img = new Image(); img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      const o = document.createElement('canvas'); o.width = o.height = 140;
+      const oc = o.getContext('2d');
+      oc.drawImage(img, 0, 0, 140, 140);
+      oc.globalCompositeOperation = 'source-in'; oc.fillStyle = fg; oc.fillRect(0, 0, 140, 140);
+      ctx.drawImage(o, 58, 58);
+      t.ready = true; t.tex.needsUpdate = true; redrawScreen();
+    };
+    img.src = window.ICON_BASE + slug + '.svg';
+    tiles[slug] = t;
+    return t;
+  }
+  const orbitSlugs = small()
+    ? ['kotlin', 'android', 'jetpackcompose', 'flutter', 'firebase', 'git', 'jenkins', 'fastlane']
+    : ['kotlin', 'android', 'jetpackcompose', 'flutter', 'dart', 'firebase', 'androidstudio', 'git', 'gitlab', 'jenkins', 'fastlane', 'tensorflow'];
+  ['kotlin','android','jetpackcompose','flutter','dart','firebase','androidstudio','git','gitlab','jenkins','fastlane','tensorflow','bitbucket','jira','nodedotjs','mongodb'].forEach(makeTile);
+
+  // ---------- phone screen (canvas texture) ----------
+  const SW = 600, SH = 1290;
+  const sc = document.createElement('canvas'); sc.width = SW; sc.height = SH;
+  const sctx = sc.getContext('2d');
+  const screenTex = new THREE.CanvasTexture(sc);
+  screenTex.colorSpace = THREE.SRGBColorSpace;
+  screenTex.anisotropy = 8;
+
+  const ACCENT = { profile: '#3ddc84', impact: '#3ddc84', bni: '#22d3ee', rey: '#7f52ff', fd: '#ec4899', projects: '#f59e0b', stack: '#3ddc84', contact: '#7f52ff' };
+  let shown = 'profile';
+
+  function card(ctx, x, y, w, h, r = 36, fill = 'rgba(255,255,255,.06)') {
+    rr(ctx, x, y, w, h, r); ctx.fillStyle = fill; ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.lineWidth = 2; ctx.stroke();
+  }
+  function header(ctx, kicker, title, sub) {
+    txt(ctx, kicker.toUpperCase(), 48, 190, 22, ACCENT[shown], 700, 'left', BODY);
+    txt(ctx, title, 48, 252, 52, '#fff', 700, 'left', FONT, SW - 96);
+    if (sub) txt(ctx, sub, 48, 298, 26, '#98a2b3', 500, 'left', BODY, SW - 96);
+  }
+  function drawScreen(state) {
+    const ctx = sctx, a = ACCENT[state];
+    ctx.clearRect(0, 0, SW, SH);
+    ctx.save(); rr(ctx, 0, 0, SW, SH, 74); ctx.clip();
+    const bg = ctx.createLinearGradient(0, 0, 0, SH); bg.addColorStop(0, '#111522'); bg.addColorStop(1, '#06080d');
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, SW, SH);
+    const glow = ctx.createRadialGradient(SW * .85, 160, 10, SW * .85, 160, 520);
+    glow.addColorStop(0, a + '66'); glow.addColorStop(1, a + '00');
+    ctx.fillStyle = glow; ctx.fillRect(0, 0, SW, SH);
+    // status bar + camera hole
+    txt(ctx, '9:41', 60, 78, 28, '#fff', 600, 'left', BODY);
+    ctx.fillStyle = '#fff';
+    for (let i = 0; i < 4; i++) ctx.fillRect(452 + i * 12, 70 - i * 6, 8, 8 + i * 6);
+    rr(ctx, 508, 52, 50, 26, 7); ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.5; ctx.stroke(); rr(ctx, 512, 56, 36, 18, 4); ctx.fill();
+    ctx.beginPath(); ctx.arc(SW / 2, 64, 17, 0, Math.PI * 2); ctx.fillStyle = '#000'; ctx.fill();
+
+    if (state === 'profile') {
+      const ag = ctx.createLinearGradient(190, 200, 410, 420); ag.addColorStop(0, '#3ddc84'); ag.addColorStop(1, '#7f52ff');
+      ctx.beginPath(); ctx.arc(SW / 2, 330, 115, 0, Math.PI * 2); ctx.fillStyle = ag; ctx.fill();
+      txt(ctx, 'AF', SW / 2, 362, 96, '#fff', 700, 'center');
+      txt(ctx, 'Alviand', SW / 2, 540, 70, '#fff', 700, 'center');
+      txt(ctx, 'Fredonovalle', SW / 2, 592, 36, '#98a2b3', 500, 'center');
+      rr(ctx, 110, 630, 380, 58, 29); ctx.fillStyle = 'rgba(61,220,132,.15)'; ctx.fill();
+      txt(ctx, 'Senior Android Developer', SW / 2, 668, 26, '#3ddc84', 600, 'center', BODY);
+      const st = [['10M+', 'users'], ['4+', 'years'], ['99%', 'stable']];
+      st.forEach((s, i) => { const x = 48 + i * 176; card(ctx, x, 740, 152, 150, 30); txt(ctx, s[0], x + 76, 812, 44, '#fff', 700, 'center'); txt(ctx, s[1], x + 76, 852, 22, '#98a2b3', 500, 'center', BODY); });
+      ['kotlin', 'jetpackcompose', 'android', 'flutter'].forEach((s, i) => { const t = tiles[s]; if (t && t.ready) ctx.drawImage(t.canvas, 66 + i * 124, 940, 96, 96); });
+      rr(ctx, 48, 1110, SW - 96, 96, 32); ctx.fillStyle = '#3ddc84'; ctx.fill();
+      txt(ctx, 'Download CV', SW / 2, 1172, 32, '#04150b', 700, 'center');
+    } else if (state === 'impact') {
+      header(ctx, 'Impact', 'Wondr by BNI');
+      const g = ctx.createLinearGradient(48, 330, 552, 470); g.addColorStop(0, '#3ddc84'); g.addColorStop(1, '#b69dff');
+      txt(ctx, '10M+', 44, 470, 168, g, 700);
+      txt(ctx, 'users served', 52, 520, 30, '#98a2b3', 500, 'left', BODY);
+      const bars = [.32, .45, .4, .58, .66, .78, .96];
+      bars.forEach((h, i) => { const bh = 300 * h, x = 60 + i * 72; rr(ctx, x, 900 - bh, 48, bh, 14); const bg2 = ctx.createLinearGradient(0, 900 - bh, 0, 900); bg2.addColorStop(0, i === 6 ? '#3ddc84' : 'rgba(61,220,132,.55)'); bg2.addColorStop(1, 'rgba(61,220,132,.08)'); ctx.fillStyle = bg2; ctx.fill(); });
+      card(ctx, 48, 960, 240, 170, 30); txt(ctx, '99%+', 72, 1040, 52, '#fff', 700); txt(ctx, 'crash-free', 72, 1086, 24, '#98a2b3', 500, 'left', BODY);
+      card(ctx, 312, 960, 240, 170, 30); txt(ctx, '−30%', 336, 1040, 52, '#fff', 700); txt(ctx, 'compile time', 336, 1086, 24, '#98a2b3', 500, 'left', BODY);
+    } else if (state === 'bni') {
+      header(ctx, 'Now · May 2026', 'Senior Android Dev', 'Bank Negara Indonesia');
+      const g = ctx.createLinearGradient(48, 350, 552, 600); g.addColorStop(0, '#0ea5e9'); g.addColorStop(1, '#7f52ff');
+      rr(ctx, 48, 350, SW - 96, 250, 40); ctx.fillStyle = g; ctx.fill();
+      txt(ctx, 'Wondr by BNI', 84, 420, 30, 'rgba(255,255,255,.85)', 600, 'left', BODY);
+      txt(ctx, '10M+', 84, 520, 92, '#fff', 700);
+      txt(ctx, 'users', 330, 520, 32, 'rgba(255,255,255,.85)', 500, 'left', BODY);
+      const rows = [['Payment', '#22d3ee'], ['Transaction', '#7f52ff'], ['Lifestyle', '#ec4899']];
+      rows.forEach((r, i) => { const y = 650 + i * 120; card(ctx, 48, y, SW - 96, 100, 28); ctx.beginPath(); ctx.arc(108, y + 50, 26, 0, Math.PI * 2); ctx.fillStyle = r[1]; ctx.fill(); txt(ctx, r[0], 156, y + 60, 32, '#fff', 600); txt(ctx, '›', 510, y + 62, 40, '#98a2b3', 500); });
+      txt(ctx, 'Unit test coverage', 48, 1060, 26, '#98a2b3', 500, 'left', BODY);
+      txt(ctx, '80%+', SW - 48, 1060, 26, '#22d3ee', 700, 'right', BODY);
+      rr(ctx, 48, 1085, SW - 96, 22, 11); ctx.fillStyle = 'rgba(255,255,255,.08)'; ctx.fill();
+      rr(ctx, 48, 1085, (SW - 96) * .82, 22, 11); ctx.fillStyle = '#22d3ee'; ctx.fill();
+      ['kotlin', 'jetpackcompose', 'fastlane', 'jenkins'].forEach((s, i) => { const t = tiles[s]; if (t && t.ready) ctx.drawImage(t.canvas, 48 + i * 90, 1140, 72, 72); });
+    } else if (state === 'rey') {
+      header(ctx, 'Dec 2025 – Apr 2026', 'Mobile Developer', 'Rey · Compose Multiplatform');
+      const layers = [['Presentation · MVI', '#7f52ff'], ['Domain', '#5b8cff'], ['Data', '#22d3ee']];
+      layers.forEach((l, i) => { const y = 380 + i * 150; rr(ctx, 48 + i * 18, y, SW - 96 - i * 36, 120, 30); ctx.fillStyle = l[1] + '33'; ctx.fill(); ctx.strokeStyle = l[1]; ctx.lineWidth = 3; ctx.stroke(); txt(ctx, l[0], SW / 2, y + 74, 34, '#fff', 600, 'center'); });
+      card(ctx, 48, 870, 240, 150, 30); card(ctx, 312, 870, 240, 150, 30);
+      const t = tiles.android; if (t && t.ready) ctx.drawImage(t.canvas, 72, 900, 90, 90);
+      txt(ctx, 'Android', 176, 958, 28, '#fff', 600, 'left', BODY);
+      rr(ctx, 336, 900, 90, 90, 22); ctx.fillStyle = '#e5e7eb'; ctx.fill(); txt(ctx, 'iOS', 381, 958, 30, '#111', 700, 'center', BODY);
+      txt(ctx, 'iOS', 446, 958, 28, '#fff', 600, 'left', BODY);
+      const k = tiles.kotlin; if (k && k.ready) ctx.drawImage(k.canvas, 48, 1080, 96, 96);
+      txt(ctx, 'One codebase,', 166, 1120, 30, '#fff', 600, 'left', BODY); txt(ctx, 'two platforms', 166, 1160, 30, '#98a2b3', 500, 'left', BODY);
+    } else if (state === 'fd') {
+      header(ctx, 'Oct 2022 – Nov 2025', 'Android Developer', 'Female Daily · CT Corp');
+      const cx = SW / 2, cy = 560, R = 170;
+      ctx.lineCap = 'round'; ctx.lineWidth = 34;
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.stroke();
+      const rg = ctx.createLinearGradient(cx - R, cy - R, cx + R, cy + R); rg.addColorStop(0, '#ec4899'); rg.addColorStop(1, '#7f52ff');
+      ctx.beginPath(); ctx.arc(cx, cy, R, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * .99); ctx.strokeStyle = rg; ctx.stroke();
+      txt(ctx, '99%+', cx, cy + 20, 88, '#fff', 700, 'center'); txt(ctx, 'crash-free', cx, cy + 66, 26, '#98a2b3', 500, 'center', BODY);
+      card(ctx, 48, 800, 240, 160, 30); txt(ctx, '500K+', 72, 880, 52, '#fff', 700); txt(ctx, 'users', 72, 922, 24, '#98a2b3', 500, 'left', BODY);
+      card(ctx, 312, 800, 240, 160, 30); txt(ctx, '10+', 336, 880, 52, '#fff', 700); txt(ctx, 'core features', 336, 922, 24, '#98a2b3', 500, 'left', BODY);
+      txt(ctx, '6 modules', 48, 1030, 26, '#98a2b3', 500, 'left', BODY);
+      for (let i = 0; i < 6; i++) { rr(ctx, 48 + i * 86, 1056, 70, 70, 18); ctx.fillStyle = i % 2 ? 'rgba(236,72,153,.5)' : 'rgba(127,82,255,.5)'; ctx.fill(); }
+      txt(ctx, '−30% compile time', 48, 1190, 30, '#fff', 600, 'left', BODY);
+    } else if (state === 'projects') {
+      header(ctx, 'Projects', 'Side quests');
+      const g = ctx.createLinearGradient(48, 320, 552, 640); g.addColorStop(0, '#f59e0b'); g.addColorStop(1, '#ef4444');
+      rr(ctx, 48, 320, SW - 96, 330, 44); ctx.fillStyle = g; ctx.fill();
+      txt(ctx, 'ب', SW - 110, 560, 220, 'rgba(255,255,255,.9)', 700, 'right', 'serif');
+      txt(ctx, 'Bara', 88, 560, 64, '#fff', 700); txt(ctx, 'Learn Arabic · TFLite', 90, 608, 26, 'rgba(255,255,255,.9)', 500, 'left', BODY);
+      const list = [['Waja', 'Top 10 · Hackathon BPJS', '#22d3ee'], ['Nutribi', 'Nutrition guidance', '#3ddc84'], ['Samter', 'Waste collection', '#a3e635'], ['Bank Sampah', 'Campus waste bank', '#7f52ff']];
+      list.forEach((r, i) => { const y = 690 + i * 120; card(ctx, 48, y, SW - 96, 100, 28); rr(ctx, 72, y + 20, 60, 60, 16); ctx.fillStyle = r[2]; ctx.fill(); txt(ctx, r[0][0], 102, y + 62, 30, '#06080d', 700, 'center'); txt(ctx, r[0], 156, y + 50, 30, '#fff', 600); txt(ctx, r[1], 156, y + 82, 22, '#98a2b3', 500, 'left', BODY); });
+    } else if (state === 'stack') {
+      header(ctx, 'Stack', 'Tools of the trade');
+      const grid = ['kotlin','android','jetpackcompose','flutter','dart','androidstudio','firebase','tensorflow','git','gitlab','bitbucket','jenkins','fastlane','jira','nodedotjs','mongodb'];
+      grid.forEach((s, i) => { const t = tiles[s]; const col = i % 4, row = Math.floor(i / 4); const x = 48 + col * 132, y = 340 + row * 196; if (t && t.ready) ctx.drawImage(t.canvas, x + 6, y, 108, 108); txt(ctx, window.ICONS[s][0].split(' ')[0], x + 60, y + 146, 20, '#cfd5e0', 500, 'center', BODY, 124); });
+    } else if (state === 'contact') {
+      header(ctx, 'Contact', 'Let’s talk.');
+      const ag = ctx.createLinearGradient(0, 360, 0, 720); ag.addColorStop(0, '#7f52ff'); ag.addColorStop(1, '#3ddc84');
+      ctx.beginPath(); ctx.arc(SW / 2, 520, 150, 0, Math.PI * 2); ctx.fillStyle = ag; ctx.fill();
+      txt(ctx, '✉', SW / 2, 568, 130, '#fff', 400, 'center', BODY);
+      txt(ctx, 'alviand03@gmail.com', SW / 2, 760, 32, '#fff', 600, 'center', BODY);
+      [['Email', '#3ddc84', '#04150b'], ['LinkedIn', 'rgba(255,255,255,.08)', '#fff'], ['GitHub', 'rgba(255,255,255,.08)', '#fff']].forEach((b, i) => { const y = 840 + i * 118; rr(ctx, 48, y, SW - 96, 96, 32); ctx.fillStyle = b[1]; ctx.fill(); txt(ctx, b[0], SW / 2, y + 60, 32, b[2], 700, 'center'); });
+    }
+    // home indicator
+    rr(ctx, SW / 2 - 90, SH - 34, 180, 10, 5); ctx.fillStyle = 'rgba(255,255,255,.6)'; ctx.fill();
+    ctx.restore();
+    screenTex.needsUpdate = true;
+  }
+  function redrawScreen() { drawScreen(shown); }
+
+  // ---------- phone model ----------
+  const phone = new THREE.Group();
+  const rig = new THREE.Group(); rig.add(phone); scene.add(rig);
+  const W = 1.62, H = 3.34, D = 0.2;
+  const bodyMat = new THREE.MeshPhysicalMaterial({ color: 0x1b1f29, metalness: .75, roughness: .26, clearcoat: 1, clearcoatRoughness: .12 });
+  phone.add(new THREE.Mesh(new RoundedBoxGeometry(W, H, D, 8, .24), bodyMat));
+  const glass = new THREE.Mesh(new THREE.PlaneGeometry(W - .08, H - .08), new THREE.MeshPhysicalMaterial({ color: 0x020203, roughness: .05, metalness: 0, clearcoat: 1 }));
+  glass.position.z = D / 2 + .001; phone.add(glass);
+  const screen = new THREE.Mesh(new THREE.PlaneGeometry(1.46, 3.14), new THREE.MeshBasicMaterial({ map: screenTex, transparent: true, toneMapped: false }));
+  screen.position.z = D / 2 + .003; phone.add(screen);
+  // side buttons
+  const btnMat = new THREE.MeshStandardMaterial({ color: 0x2a303c, metalness: .8, roughness: .3 });
+  [[.95, .35], [.55, .55]].forEach(([y, h]) => { const b = new THREE.Mesh(new RoundedBoxGeometry(.04, h, .08, 2, .02), btnMat); b.position.set(W / 2 + .01, y, 0); phone.add(b); });
+  // camera module on the back
+  const camMod = new THREE.Mesh(new RoundedBoxGeometry(.66, .66, .06, 4, .14), new THREE.MeshPhysicalMaterial({ color: 0x252a35, metalness: .5, roughness: .2, clearcoat: 1 }));
+  camMod.position.set(-.36, 1.17, -D / 2 - .02); phone.add(camMod);
+  const lensMat = new THREE.MeshPhysicalMaterial({ color: 0x05060a, metalness: .2, roughness: .05, clearcoat: 1 });
+  const ringMat = new THREE.MeshStandardMaterial({ color: 0x8b95a5, metalness: 1, roughness: .25 });
+  [[-.5, 1.31], [-.22, 1.03], [-.22, 1.31]].forEach(([x, y], i) => {
+    const r = i === 2 ? .05 : .11;
+    const ring = new THREE.Mesh(new THREE.CylinderGeometry(r + .02, r + .02, .05, 40), ringMat); ring.rotation.x = Math.PI / 2; ring.position.set(x, y, -D / 2 - .06); phone.add(ring);
+    const lens = new THREE.Mesh(new THREE.CylinderGeometry(r, r, .052, 40), lensMat); lens.rotation.x = Math.PI / 2; lens.position.set(x, y, -D / 2 - .062); phone.add(lens);
+  });
+  // monogram on the back
+  const bc = document.createElement('canvas'); bc.width = 256; bc.height = 128;
+  const bctx = bc.getContext('2d');
+  const backTex = new THREE.CanvasTexture(bc); backTex.colorSpace = THREE.SRGBColorSpace;
+  function drawBack() { bctx.clearRect(0, 0, 256, 128); txt(bctx, 'AF', 128, 92, 84, 'rgba(255,255,255,.55)', 700, 'center'); backTex.needsUpdate = true; }
+  drawBack();
+  const back = new THREE.Mesh(new THREE.PlaneGeometry(.7, .35), new THREE.MeshBasicMaterial({ map: backTex, transparent: true }));
+  back.position.set(0, -.2, -D / 2 - .001); back.rotation.y = Math.PI; phone.add(back);
+
+  // glow behind phone
+  const gc = document.createElement('canvas'); gc.width = gc.height = 256;
+  const gctx = gc.getContext('2d'); const rg = gctx.createRadialGradient(128, 128, 0, 128, 128, 128);
+  rg.addColorStop(0, 'rgba(255,255,255,.9)'); rg.addColorStop(.35, 'rgba(255,255,255,.25)'); rg.addColorStop(1, 'rgba(255,255,255,0)');
+  gctx.fillStyle = rg; gctx.fillRect(0, 0, 256, 256);
+  const glowMat = new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(gc), color: 0x3ddc84, transparent: true, opacity: .55, blending: THREE.AdditiveBlending, depthWrite: false });
+  const glowSprite = new THREE.Sprite(glowMat); glowSprite.scale.set(7, 7, 1); glowSprite.position.z = -1.6; rig.add(glowSprite);
+
+  // orbiting logo tiles
+  const orbit = new THREE.Group(); orbit.rotation.x = .38; orbit.rotation.z = -.12; rig.add(orbit);
+  const sprites = orbitSlugs.map((s, i) => {
+    const m = new THREE.SpriteMaterial({ map: tiles[s].tex, transparent: true, depthWrite: false });
+    const sp = new THREE.Sprite(m); sp.scale.set(.5, .5, 1);
+    sp.userData = { a: (i / orbitSlugs.length) * Math.PI * 2, r: 1.95 + (i % 3) * .22, y: (i % 2 ? .3 : -.3) };
+    orbit.add(sp); return sp;
+  });
+
+  // particles
+  const N = small() ? 380 : 900;
+  const pos = new Float32Array(N * 3);
+  for (let i = 0; i < N; i++) {
+    const r = 5 + Math.random() * 10, t = Math.random() * Math.PI * 2, p = Math.acos(2 * Math.random() - 1);
+    pos[i * 3] = r * Math.sin(p) * Math.cos(t); pos[i * 3 + 1] = r * Math.sin(p) * Math.sin(t) * .6; pos[i * 3 + 2] = r * Math.cos(p) - 4;
+  }
+  const pg = new THREE.BufferGeometry(); pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const stars = new THREE.Points(pg, new THREE.PointsMaterial({ color: 0xaab8ff, size: .035, transparent: true, opacity: .7, depthWrite: false }));
+  scene.add(stars);
+
+  // ---------- layout ----------
+  let base = { x: 0, y: 0, s: 1 };
+  function layout() {
+    const w = innerWidth, h = innerHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    const vh = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.position.z, vw = vh * camera.aspect;
+    if (w > 960) base = { x: Math.min(vw * .27, 3.6), y: -.05, s: Math.min(.95, vh / 5.9) };
+    else base = { x: 0, y: vh * .2, s: Math.min(.72, vw / 4.6) };
+  }
+  layout(); addEventListener('resize', layout);
+
+  // ---------- screen state from scroll ----------
+  let target = 'profile';
+  const so = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      target = e.target.dataset.screen;
+      document.querySelectorAll('.job').forEach(j => j.classList.toggle('active', j === e.target));
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  document.querySelectorAll('[data-screen]').forEach(el => so.observe(el));
+
+  // spin transition
+  let spin = null; // {t0, swapped}
+  const SPIN = .95;
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  // pointer parallax
+  const ptr = { x: 0, y: 0 }, tilt = { x: 0, y: 0 };
+  addEventListener('pointermove', e => { ptr.x = e.clientX / innerWidth * 2 - 1; ptr.y = e.clientY / innerHeight * 2 - 1; }, { passive: true });
+
+  document.fonts && document.fonts.ready.then(() => { drawBack(); redrawScreen(); });
+  drawScreen(shown);
+
+  const clock = new THREE.Clock();
+  const glowColor = new THREE.Color(ACCENT.profile), tmpC = new THREE.Color();
+  let running = true;
+  document.addEventListener('visibilitychange', () => { running = !document.hidden; if (running) { clock.getDelta(); loop(); } });
+
+  function loop() {
+    if (!running) return;
+    const dt = Math.min(clock.getDelta(), .05), t = clock.elapsedTime;
+
+    // start a spin whenever the requested screen differs from the one shown
+    if (!spin && target !== shown) {
+      if (reduce) { shown = target; redrawScreen(); }
+      else spin = { t0: t, swapped: false };
+    }
+    let extra = 0;
+    if (spin) {
+      const p = Math.min(1, (t - spin.t0) / SPIN);
+      extra = ease(p) * Math.PI * 2;
+      if (!spin.swapped && p >= .5) { shown = target; redrawScreen(); spin.swapped = true; }
+      if (p >= 1) spin = null;
+    }
+
+    tilt.x += ((reduce ? 0 : ptr.y * .18) - tilt.x) * .05;
+    tilt.y += ((reduce ? 0 : ptr.x * .35) - tilt.y) * .05;
+    const sp = scrollY / Math.max(1, document.body.scrollHeight - innerHeight);
+    rig.position.set(base.x, base.y + (reduce ? 0 : Math.sin(t * 1.1) * .07), 0);
+    rig.scale.setScalar(base.s);
+    phone.rotation.set(tilt.x + (reduce ? 0 : Math.sin(t * .6) * .04), -.32 + tilt.y + extra + sp * .6, (reduce ? 0 : Math.sin(t * .5) * .03));
+
+    const stackMode = shown === 'stack';
+    sprites.forEach(s => {
+      const u = s.userData;
+      if (!reduce) u.a += dt * (stackMode ? .55 : .22);
+      const r = u.r * (stackMode ? 1.12 : 1);
+      s.position.set(Math.cos(u.a) * r, u.y + Math.sin(u.a * 2 + t) * .06, Math.sin(u.a) * r);
+      const sc2 = .44 * (stackMode ? 1.15 : 1); s.scale.x += (sc2 - s.scale.x) * .08; s.scale.y = s.scale.x;
+    });
+    if (!reduce) { stars.rotation.y = t * .015; stars.rotation.x = Math.sin(t * .1) * .05; }
+    glowColor.lerp(tmpC.set(ACCENT[shown]), .04); glowMat.color.copy(glowColor);
+
+    // on small screens the scene only lives in the hero; skip rendering once it has scrolled away
+    if (!(small() && scrollY > innerHeight * 1.05)) renderer.render(scene, camera);
+    requestAnimationFrame(loop);
+  }
+  loop();
 </script>
 </body>
 </html>
